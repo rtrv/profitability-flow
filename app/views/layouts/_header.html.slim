@@ -1,0 +1,24 @@
+header.navbar.navbar-inverse.navbar-static-top
+  .container
+    .navbar-header
+      = link_to 'Profitability Flow', root_path, class: 'navbar-brand'
+    nav.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        - if @_current_account
+          li.dropdown
+            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              = @_current_account.email
+              span.caret
+            ul.dropdown-menu
+              li
+                = link_to 'Dashboard', dashboard_path
+              li.divider role="separator"
+              li
+                = link_to 'Sign out', destroy_session_path(@_current_account), method: :delete
+        - else
+          li
+            p.navbar-text
+              = 'Sign in as a '
+              = link_to 'company', new_company_session_path
+              = ' or an '
+              = link_to 'investor', new_investor_session_path
