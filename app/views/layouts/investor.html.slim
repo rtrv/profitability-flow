@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    = render partial: 'layouts/head'
+  body
+    = render 'layouts/header'
+    .container-fluid.main-container
+      .row
+        .col-sm-3.col-md-2.sidebar
+          ul.nav.nav-sidebar
+            li class=( active_link(investor_root_path) )
+              = link_to 'Дэшборд', investor_root_path
+            li class=( active_link(investor_payments_path) )
+              = link_to 'История платежей', investor_payments_path
+            li class=( active_link(new_investor_loan_path) )
+              = link_to 'Новые инвестиции', new_investor_loan_path
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          = yield
+    = console

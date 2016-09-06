@@ -14,4 +14,16 @@ module ApplicationHelper
       investor_root_path
     end
   end
+
+  def active_link(link_path)
+    current_page?(link_path) ? "active" : ""
+  end
+
+  def print_money(amount)
+    ('%.2f' % amount) + ' р.' if amount
+  end
+
+  def print_percent(percent)
+    percent.round.to_s + ' %'
+  end
 end

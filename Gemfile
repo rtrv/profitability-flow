@@ -53,6 +53,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # RSpec for tests. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
+  # Test data factory. Read more: https://github.com/thoughtbot/factory_girl
+  gem 'factory_girl_rails'
 end
 
 group :development do

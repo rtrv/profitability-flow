@@ -1,0 +1,17 @@
+h1.page-header
+  | История платежей
+table.table
+  thead
+    th ID займа
+    th Компания
+    th Месяц
+    th Сумма
+    th Статус
+  tbody
+    - @payments.each do |payment|
+      tr
+        td = payment.loan.id
+        td = payment.loan.company.name
+        td = payment.month
+        td = print_money(payment.actual_amount)
+        td = payment.state

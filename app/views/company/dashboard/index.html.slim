@@ -1,2 +1,28 @@
-h1
-  | Company dashboard
+h1 Полученные займы
+table.table
+  thead
+    th Инвестор
+    th Сумма
+    th Срок, мес.
+    th Состояние
+    th colspan=1
+  tbody
+    - @loans.each do |l|
+      tr
+        td = l.investor.name
+        td = l.amount
+        td = l.time
+        td = l.state
+        td
+          - if l.payments.unpaid.count > 0
+            .btn-group
+              button.btn.btn-default.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+                | Действия
+                span.caret
+              ul.dropdown-menu.dropdown-menu-right
+                li
+                  = link_to 'Погасить ближайший платёж', company_payment_path(l.following_payment), method: :put
+                li
+                  = link_to 'Погасить ближайший платёж с просрочкой', company_payment_path(l.following_payment, delayed: true), method: :put
+                li
+                  = link_to 'Погасить остаток досрочно', company_payment_path(l.following_payment, repayment: true), method: :put

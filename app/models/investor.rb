@@ -1,2 +1,0 @@
-class Investor < Account
-end
