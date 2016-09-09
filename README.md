@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Калькулятор доходности, показывающий ожидаемую и фактическую прибыль на основе исторических данных
 
-Things you may want to cover:
+Запущенное приложение доступно по [ссылке](http://profitability.krivonozhko.ru/)
 
-* Ruby version
+* Аутентификация в качестве инвестора и заёмщика
 
-* System dependencies
+* Выдача новых займов инвестором
 
-* Configuration
+* Просмотр истории платежей инвестором
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Произведение платежей по выданным займам компаниями
