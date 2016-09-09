@@ -1,3 +1,28 @@
-h1
-  = 'Доходность: '
-  = print_percent(Loan.actual_profit)
+.row.calculator
+  .col-md-8.col-md-offset-2
+    .row
+      .col-md-12
+        - if flash[:error]
+          .alert.alert-danger role='alert'
+            = flash[:error]
+        h1.center Калькулятор
+        form action='/' method='get'
+          .input-group
+            input.form-control placeholder=('Введите сумму инвестиций...') type='number' name='amount'
+            span.input-group-btn
+              button.btn.btn-success type='submit' Рассчитать доходность
+    .row
+      .col-md-6.col-sm-12.center
+        h2 = print_percent(@expected_profit)
+        h4 Ожидаемая доходность
+      .col-md-6.col-sm-12.center
+        h2 = print_percent(@actual_profit)
+        h4 Фактическая доходность
+    - if @expected_payment && @actual_payment
+      .row
+        .col-md-6.col-sm-12.center
+          h2 = print_money(@expected_payment)
+          h4 Ожидаемая прибыль за полгода
+        .col-md-6.col-sm-12.center
+          h2 = print_money(@actual_payment)
+          h4 Фактическая прибыль за полгода
