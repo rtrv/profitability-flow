@@ -2,6 +2,9 @@ class DeviseCreateAccounts < ActiveRecord::Migration[5.0]
   def change
     create_table :accounts do |t|
       t.string :type
+      t.string :name
+      # Description for companies
+      t.string :description
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

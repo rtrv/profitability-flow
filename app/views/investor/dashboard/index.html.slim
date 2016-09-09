@@ -1,2 +1,23 @@
-h1
-  | Investor dashboard
+h1.page-header Дэшборд
+p
+  = 'Всего выдано займов: '
+  = @loans.count.to_s
+table.table
+  thead
+    th Компания
+    th Сумма
+    th Срок, мес.
+    th Процент
+    th Процент по просрочке
+    th Ожидаемая доходность
+    th Фактическая доходность
+  tbody
+    - @loans.each do |l|
+      tr
+        td = l.company.name
+        td = l.amount
+        td = l.time.to_s
+        td = print_percent(l.regular_percent)
+        td = print_percent(l.delay_percent)
+        td = print_percent(l.expected_profit)
+        td = l.actual_profit ? print_percent(l.actual_profit) : 'Займ не погашен'

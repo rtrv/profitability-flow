@@ -1,7 +1,7 @@
-header.navbar.navbar-inverse.navbar-static-top
-  .container
+nav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
     .navbar-header
-      = link_to 'Profitability Flow', root_path, class: 'navbar-brand'
+      = link_to 'Калькулятор доходности', root_path, class: 'navbar-brand'
     nav.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if @_current_account
@@ -11,14 +11,14 @@ header.navbar.navbar-inverse.navbar-static-top
               span.caret
             ul.dropdown-menu
               li
-                = link_to 'Dashboard', dashboard_path
+                = link_to 'Дэшборд', dashboard_path
               li.divider role="separator"
               li
-                = link_to 'Sign out', destroy_session_path(@_current_account), method: :delete
+                = link_to 'Выйти', destroy_session_path(@_current_account), method: :delete
         - else
           li
             p.navbar-text
-              = 'Sign in as a '
-              = link_to 'company', new_company_session_path
-              = ' or an '
-              = link_to 'investor', new_investor_session_path
+              = 'Войти как '
+              = link_to 'компания', new_company_session_path
+              = ' или '
+              = link_to 'инвестор', new_investor_session_path

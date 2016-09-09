@@ -1,0 +1,13 @@
+h1.page-header Новые инвестиции
+= form_tag investor_loans_path, class: 'form-horizontal'
+  .form-group
+    = label_tag 'amount', 'Сумма', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = text_field_tag 'amount', nil, class: 'form-control', type: 'number'
+  .form-group
+    = label_tag 'time', 'Количество месяцев', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = select_tag 'time', options_for_select([6,12,18,24,30,36]), class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = submit_tag 'Выдать займ', class: 'btn btn-default'

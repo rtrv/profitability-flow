@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902124127) do
+ActiveRecord::Schema.define(version: 20160906204202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "type"
+    t.string   "name"
+    t.string   "description"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -31,6 +33,32 @@ ActiveRecord::Schema.define(version: 20160902124127) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "investor_id"
+    t.float    "amount"
+    t.integer  "time"
+    t.integer  "regular_percent"
+    t.integer  "delay_percent"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["company_id"], name: "index_loans_on_company_id", using: :btree
+    t.index ["investor_id"], name: "index_loans_on_investor_id", using: :btree
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "loan_id"
+    t.integer  "month"
+    t.boolean  "delayed"
+    t.boolean  "repayment"
+    t.boolean  "paid"
+    t.float    "expected_amount"
+    t.float    "actual_amount"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["loan_id"], name: "index_payments_on_loan_id", using: :btree
   end
 
 end
