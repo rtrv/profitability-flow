@@ -5,6 +5,7 @@ class Investor::LoansController < InvestorController
   def new
   end
 
+=begin
   def create
     amount = params[:amount].to_i
     time = params[:time].to_i
@@ -17,10 +18,21 @@ class Investor::LoansController < InvestorController
     end
     redirect_to investor_root_path
   end
+=end
 
-  def destroy
-
+  def create
+    amount = params[:amount].to_f
+    time = params[:time].to_i
+    company = Company.find(params[:company_id].to_i)
+    Loan.create(company: company,
+                investor: current_investor,
+                amount: amount,
+                time: time)
+    redirect_to investor_root_path
   end
+
+  #def destroy
+  #end
 
   private
 
