@@ -16,14 +16,14 @@ module ApplicationHelper
   end
 
   def active_link(link_path)
-    current_page?(link_path) ? "active" : ""
+    current_page?(link_path) ? 'active' : ''
   end
 
   def print_money(amount)
-    ('%.2f' % amount) + ' р.' if amount
+    amount ? stringf('%.2f р.', amount) : 'Некорректная сумма'
   end
 
   def print_percent(percent)
-    percent.round.to_s + ' %'
+    "#{percent.round} %"
   end
 end
